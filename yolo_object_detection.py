@@ -11,7 +11,7 @@ output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # Loading image
-img = cv2.imread("street.jpg")
+img = cv2.imread("dog.jpg")
 img = cv2.resize(img, None, fx=0.4, fy=0.4)
 height, width, channels = img.shape
 
@@ -24,8 +24,7 @@ outs = net.forward(output_layers)
 resize_factor = 1080/img.shape[1]
 width = int(img.shape[1] * resize_factor)
 height = int(img.shape[0] * resize_factor)
-dim = (width, height) 
-img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+img = cv2.resize(img, (width, height), interpolation = cv2.INTER_AREA)
 
 # Showing informations on the screen
 class_ids = []
